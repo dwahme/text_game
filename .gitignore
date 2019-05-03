@@ -1,5 +1,6 @@
 # Custom ignores
-*build/*
+TextBasedGame/build/*
+TextBasedGame/dist/*
 
 # Compiled class file
 *.class
