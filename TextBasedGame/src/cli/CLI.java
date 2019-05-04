@@ -16,5 +16,23 @@ public class CLI
                 + "\nUnfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. "
                 + "\nHe could save others from death, but not himself.");
     }
+
+    public String process(String input)
+    {
+        if (input.equalsIgnoreCase("INVENTORY"))
+        {
+            System.out.println("You have nothing in your inventory.\n");
+        }
+        else if (input.equalsIgnoreCase("LOOK"))
+        {
+            System.out.println("You see an empty room with no doors.\n");
+        }
+        else
+        {
+            System.out.println("Unrecognized command: " + input + "\n");
+        }
+
+        return "> ";
+    }
     
 }
