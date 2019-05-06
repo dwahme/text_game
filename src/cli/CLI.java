@@ -9,6 +9,7 @@ public class CLI
     Boolean exit = false;
     String prompt = "> ";
 
+    //No args constructor
     public CLI() 
     {
 
