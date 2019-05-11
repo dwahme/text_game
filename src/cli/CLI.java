@@ -6,7 +6,7 @@ public class CLI
 {
     ActionManagement Manager = new ActionManagement();
     String[] commands = {"INVENTORY", "LOOK"};
-    Boolean exit = false;
+    Boolean endGame = false;
     String prompt = "> ";
 
     //No args constructor
@@ -18,7 +18,7 @@ public class CLI
     // Returns if we need to exit the game
     public Boolean endGame()
     {
-        return exit;
+        return endGame;
     }
 
     // Gets the current prompt
@@ -48,7 +48,7 @@ public class CLI
         if (input.equalsIgnoreCase("EXIT"))
         {
             System.out.println("Goodbye, adventurer.\n");
-            this.exit = true;
+            this.endGame = true;
             return;
         }
 

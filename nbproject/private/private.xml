@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/text_game/src/cli/CLI.java</file>
+            <file>file:/D:/text_game/src/TextBasedGame.java</file>
+            <file>file:/D:/text_game/src/player/Player.java</file>
+            <file>file:/D:/text_game/src/actionmanagement/ActionManagement.java</file>
+            <file>file:/D:/text_game/src/db/DB.java</file>
+            <file>file:/D:/text_game/src/worldgen/WorldGen.java</file>
+            <file>file:/D:/text_game/src/gamestate/GameState.java</file>
+        </group>
     </open-files>
 </project-private>
