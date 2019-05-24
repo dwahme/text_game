@@ -17,7 +17,14 @@ public class Room
         return connections.containsKey(dir);
     }
 
+    // Gets a room in a certain direction
+    public Room getRoom(String dir)
+    {
+        return connections.get(dir);
+    }
+
     // Connects two rooms (returns false if the new room is invalid)
+    // Will overwrite the room in that direction
     public Boolean connectRoom(Room newRoom, String dir, String otherDir)
     {
         // Make sure the room is valid
