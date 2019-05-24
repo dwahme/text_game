@@ -1,12 +1,10 @@
 package cli;
 
 import actionmanagement.ActionManagement;
-import gamestate.GameState;
 
 public class CLI 
 {
     ActionManagement Manager = new ActionManagement();
-    GameState Game = new GameState();
     String[] commands = {"INVENTORY", "LOOK"};
     Boolean endGame = false;
     String prompt = "> ";
