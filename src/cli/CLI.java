@@ -5,6 +5,9 @@ import actionmanagement.ActionManagement;
 public class CLI 
 {
     ActionManagement Manager = new ActionManagement();
+    Commands0[] commands0 = {new Commands0("INVENTORY")};
+    
+    
     String[] commands = {"INVENTORY", "LOOK", "WALK"};
     Boolean endGame = false;
     String prompt = "> ";

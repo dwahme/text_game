@@ -1,5 +1,5 @@
 package actionmanagement;
-import java.util.Scanner;
+
 public class ActionManagement 
 {
     //No args constructor
