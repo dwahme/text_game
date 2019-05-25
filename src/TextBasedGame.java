@@ -19,5 +19,7 @@ public class TextBasedGame
             String line = Scan.nextLine();
             Shell.process(line);
         }
+
+        Scan.close();
     }
 }
