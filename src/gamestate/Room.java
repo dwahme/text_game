@@ -28,7 +28,7 @@ public class Room
     public Boolean connectRoom(Room newRoom, String dir, String otherDir)
     {
         // Make sure the room is valid
-        if (newRoom == null)
+        if (newRoom == null || dir == null || otherDir == null)
         {
             return false;
         }
