@@ -5,10 +5,21 @@ import java.util.HashMap;
 public class Room 
 {
     HashMap<String, Room> connections = new HashMap<String, Room>();
+    String description;
 
-    //No args constructor
-    public Room() 
+    public Room(String desc) 
     {
+        description = desc;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(String desc)
+    {
+        description = desc;
     }
 
     // Sees if a room exists in a certain direction
