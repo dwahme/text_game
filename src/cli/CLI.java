@@ -5,17 +5,17 @@ import actionmanagement.ActionManagement;
 public class CLI 
 {
     ActionManagement Manager = new ActionManagement();
-    Commands0[] commands0 = {new Commands0("INVENTORY")};
     
+    // Holds the commands that have no arguments
+    Commands0 noParamCommand[] = {new Commands0("INVENTORY")};
     
-    String[] commands = {"INVENTORY", "LOOK", "WALK"};
+    // Vars
     Boolean endGame = false;
     String prompt = "> ";
 
-    //No args constructor
+    // No args constructor
     public CLI() 
     {
-
     }
 
     // Returns if we need to exit the game
@@ -33,14 +33,14 @@ public class CLI
     // Sees if a command is valid
     private Boolean isValidCommand(String input)
     {
-        for (String command: this.commands)
+        // Handles the validation for NoParamCommands
+        for (Commands0 command: this.noParamCommand)
         {
-            if (input.trim().equalsIgnoreCase(command))
+            if(command.isValidNoParamCommand(input) == true)
             {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -64,6 +64,5 @@ public class CLI
         {
             System.out.println("Unrecognized command: " + input + "\n");
         }
-    }
-    
+    }    
 }
