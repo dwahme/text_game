@@ -34,9 +34,9 @@ public class CLI
     private Boolean isValidCommand(String input)
     {
         // Handles the validation for NoParamCommands
-        for (Commands0 command: this.noParamCommand)
+        for (Commands0 command0obj: this.noParamCommand)
         {
-            if(command.isValidNoParamCommand(input) == true)
+            if(command0obj.CommandMatches(input) == true)
             {
                 return true;
             }

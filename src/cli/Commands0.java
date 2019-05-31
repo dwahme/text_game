@@ -2,22 +2,17 @@ package cli;
 
 public class Commands0
 {
-    private String noParamCommand;
+    private String CommandName;
 
     // Constructor with command as argument
     public Commands0(String noParamCommand) 
     {
-        this.noParamCommand = noParamCommand;
+        this.CommandName = noParamCommand;
     }
-    
-    
+        
     // Sees if a command is valid
-    public Boolean isValidNoParamCommand(String candidateCommand)
+    public Boolean CommandMatches(String candidateCommand)
     {
-        if(candidateCommand.trim().equalsIgnoreCase(noParamCommand))
-        {
-           return true; 
-        }
-        return false;
-    }
+        return candidateCommand.trim().equalsIgnoreCase(CommandName);
+    }         
 }
