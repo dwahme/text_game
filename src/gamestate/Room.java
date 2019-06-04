@@ -7,16 +7,19 @@ public class Room
     HashMap<String, Room> connections = new HashMap<String, Room>();
     String description;
 
+    // Creates the Room object
     public Room(String desc) 
     {
         description = desc;
     }
 
+    // Retrieves the description from the Room object
     public String getDescription()
     {
         return description;
     }
 
+    //  Sets the description for a room 
     public void setDescription(String desc)
     {
         description = desc;
@@ -36,10 +39,10 @@ public class Room
 
     // Connects two rooms (returns false if the new room is invalid)
     // Will overwrite the room in that direction
-    public Boolean connectRoom(Room newRoom, String dir, String otherDir)
+    public Boolean connectRoom(Room newRoom, String dir, String oppositeDirection)
     {
         // Make sure the room is valid
-        if (newRoom == null || dir == null || otherDir == null)
+        if (newRoom == null || dir == null || oppositeDirection == null)
         {
             return false;
         }
@@ -48,7 +51,7 @@ public class Room
         this.connections.put(dir, newRoom);
 
         // Add this room to the other room's connections
-        newRoom.connections.put(otherDir, this);
+        newRoom.connections.put(oppositeDirection, this);
 
         return true;
     }

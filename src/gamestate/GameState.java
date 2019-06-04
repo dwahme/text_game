@@ -2,14 +2,14 @@ package gamestate;
 
 public class GameState 
 {
-    Room currRoom = new Room("light yelow");
+    Room currRoom = new Room("light yellow");
 
     //No args constructor
     public GameState() 
     {
         System.out.println(currRoom.getDescription());
 
-        currRoom.setDescription("dark yelow");
+        currRoom.setDescription("dark yellow");
 
         System.out.println(currRoom.getDescription());
     }
