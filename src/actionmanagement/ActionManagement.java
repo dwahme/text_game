@@ -1,7 +1,11 @@
 package actionmanagement;
 
+import gamestate.GameState;
+
 public class ActionManagement 
 {
+    GameState Game = new GameState();
+
     //No args constructor
     public ActionManagement()
     {
