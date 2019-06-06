@@ -5,6 +5,8 @@
         <group>
             <file>file:/D:/text_game/src/cli/CLI.java</file>
             <file>file:/D:/text_game/src/TextBasedGame.java</file>
+            <file>file:/D:/text_game/src/cli/Commands1.java</file>
+            <file>file:/D:/text_game/src/cli/Commands0.java</file>
             <file>file:/D:/text_game/src/player/Player.java</file>
             <file>file:/D:/text_game/src/actionmanagement/ActionManagement.java</file>
             <file>file:/D:/text_game/src/db/DB.java</file>
