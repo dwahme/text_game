@@ -10,11 +10,16 @@ public class Commands1 extends Commands0
     public Commands1(String oneParamCommand, String[] params) 
     {
         super(oneParamCommand);
+
+        for (String param: params)
+        {
+            param0.add(param);
+        }
     }
 
     // Sees if a command is valid for this command
     public Boolean CommandMatches(String candidateCommand)
     {
         return super.CommandMatches(candidateCommand);
-    }         
+    }
 }
