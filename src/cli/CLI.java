@@ -6,8 +6,12 @@ public class CLI
 {
     ActionManagement Manager = new ActionManagement();
     
-    // Holds the commands that have no arguments
+    // Holds all the possible commands we support
     Commands0 noParamCommand[] = {new Commands0("INVENTORY")};
+    Commands1 oneParamCommand[] = 
+    {
+        new Commands1("WALK", new String[] {"NORTH", "SOUTH", "EAST", "WEST"})
+    };
     
     // Vars
     Boolean endGame = false;
@@ -36,11 +40,20 @@ public class CLI
         // Handles the validation for NoParamCommands
         for (Commands0 command0obj: this.noParamCommand)
         {
-            if(command0obj.CommandMatches(input) == true)
+            if (command0obj.CommandMatches(input) == true)
             {
                 return true;
             }
         }
+        
+        for (Commands1 commmand1obj: this.oneParamCommand)
+        {
+            if (commmand1obj.CommandMatches(input) == true)
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 
