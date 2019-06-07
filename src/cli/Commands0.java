@@ -2,7 +2,7 @@ package cli;
 
 public class Commands0
 {
-    private String CommandName;
+    protected String CommandName;
 
     // Constructor with command as argument
     public Commands0(String noParamCommand) 
@@ -10,7 +10,7 @@ public class Commands0
         this.CommandName = noParamCommand;
     }
         
-    // Sees if a command is valid
+    // Sees if a command matches this command's name
     public Boolean CommandMatches(String candidateCommand)
     {
         return candidateCommand.trim().equalsIgnoreCase(CommandName);
