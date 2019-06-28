@@ -9,10 +9,16 @@ public class Commands0
     {
         this.CommandName = noParamCommand;
     }
-        
+
     // Sees if a command matches this command's name
-    public Boolean CommandMatches(String candidateCommand)
+    public Boolean CommandMatches(String args)
     {
-        return candidateCommand.trim().equalsIgnoreCase(CommandName);
-    }         
+        return args.trim().equalsIgnoreCase(CommandName);
+    }
+
+    // Sees if the full command is valid (command and parameters)
+    public Boolean ValidParams(String args)
+    {
+        return true;
+    }
 }
