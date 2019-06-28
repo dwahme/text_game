@@ -10,7 +10,15 @@ public class CLI
     Commands0 noParamCommand[] = {new Commands0("INVENTORY")};
     Commands1 oneParamCommand[] = 
     {
+        new Commands1("LOOK", null),
+        new Commands1("ATTACK", null),
+        new Commands1("UNLOCK", null),
         new Commands1("WALK", new String[] {"NORTH", "SOUTH", "EAST", "WEST"})
+    };
+    Commands2 twoParamCommand[] = 
+    {
+        new Commands2("EQUIP", null, new String[] {"LEFT", "RIGHT", "BOTH"}),
+        new Commands2("PICK", new String[] {"UP"}, null)
     };
     
     // Vars
@@ -42,7 +50,7 @@ public class CLI
         {
             if (command0obj.CommandMatches(input) == true)
             {
-                return true;
+                return command0obj.ValidParams(input);
             }
         }
         
@@ -50,7 +58,15 @@ public class CLI
         {
             if (commmand1obj.CommandMatches(input) == true)
             {
-                return true;
+                return commmand1obj.ValidParams(input);
+            }
+        }
+
+        for (Commands2 commmand2obj: this.twoParamCommand)
+        {
+            if (commmand2obj.CommandMatches(input) == true)
+            {
+                return commmand2obj.ValidParams(input);
             }
         }
 
