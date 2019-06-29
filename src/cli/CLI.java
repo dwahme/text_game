@@ -1,25 +1,13 @@
 package cli;
 
+import java.util.HashMap;
 import actionmanagement.ActionManagement;
 
 public class CLI 
 {
     ActionManagement Manager = new ActionManagement();
-    
-    // Holds all the possible commands we support
-    Commands0 noParamCommand[] = {new Commands0("INVENTORY")};
-    Commands1 oneParamCommand[] = 
-    {
-        new Commands1("LOOK", null),
-        new Commands1("ATTACK", null),
-        new Commands1("UNLOCK", null),
-        new Commands1("WALK", new String[] {"NORTH", "SOUTH", "EAST", "WEST"})
-    };
-    Commands2 twoParamCommand[] = 
-    {
-        new Commands2("EQUIP", null, new String[] {"LEFT", "RIGHT", "BOTH"}),
-        new Commands2("PICK", new String[] {"UP"}, null)
-    };
+
+    HashMap<String, Command> commands;
     
     // Vars
     Boolean endGame = false;
@@ -28,6 +16,29 @@ public class CLI
     // No args constructor
     public CLI() 
     {
+        addCommands();
+    }
+
+    // Makes the set of possible commands
+    private void addCommands()
+    {
+        commands = new HashMap<String, Command>();
+
+        // 0 param commands
+        commands.put("INVENTORY", new Command("INVENTORY"));
+        
+        // 1 param commands
+        commands.put("LOOK", new Command("LOOK").addParam());
+        commands.put("ATTACK", new Command("ATTACK").addParam());
+        commands.put("UNLOCK", new Command("UNLOCK").addParam());
+        commands.put("WALK",
+            new Command("WALK").addParam("NORTH", "SOUTH", "EAST", "WEST"));
+
+        // 2 param commands
+        commands.put("EQUIP", 
+            new Command("EQUIP").addParam().addParam("LEFT", "RIGHT", "BOTH"));
+        commands.put("PICK", 
+            new Command("PICK").addParam("UP").addParam());
     }
 
     // Returns if we need to exit the game
@@ -45,37 +56,30 @@ public class CLI
     // Sees if a command is valid
     private Boolean isValidCommand(String input)
     {
-        // Handles the validation for NoParamCommands
-        for (Commands0 command0obj: this.noParamCommand)
+        // Split the input into a list of words
+        String[] words = input.trim().split("\\s+");
+
+        // Find the associated command
+        Command command = commands.get(words[0].toUpperCase());
+
+        if (command != null)
         {
-            if (command0obj.CommandMatches(input) == true)
-            {
-                return command0obj.ValidParams(input);
-            }
+            return command.validParams(input);
         }
         
-        for (Commands1 commmand1obj: this.oneParamCommand)
-        {
-            if (commmand1obj.CommandMatches(input) == true)
-            {
-                return commmand1obj.ValidParams(input);
-            }
-        }
-
-        for (Commands2 commmand2obj: this.twoParamCommand)
-        {
-            if (commmand2obj.CommandMatches(input) == true)
-            {
-                return commmand2obj.ValidParams(input);
-            }
-        }
-
+        // Command not found
         return false;
     }
 
     // Processes a command
     public void process(String input)
     {
+        // if input is whitepsace
+        if (input.trim().length() == 0)
+        {
+            return;
+        }
+
         // See if the command is one of the baseline commands
         if (input.equalsIgnoreCase("EXIT"))
         {
