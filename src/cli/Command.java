@@ -14,26 +14,27 @@ public class Command
         this.CommandName = command.toUpperCase();
     }
 
-    // Attaches a set of possible args to a command's possible arguments
-    // so when a command is created, we can tack on
-    // possible arguemnts as necessary
-    public Command addParam(String... args)
+    // Increases the number of parameters for the command by 1,
+    // and allows specifying which possible arguments for that parameter
+    // are valid. If no arguments are specified, then any string is
+    // valid for the parameter
+    public Command addParam(String... possibleParams)
     {
         // See if it's a wildcard argument or a set number of args
-        if (args.length > 0)
+        if (possibleParams.length > 0)
         {
             // Set of possible args
             HashSet<String> argSet = new HashSet<String>();
             argSets.add(argSet);
 
-            for (String arg: args)
+            for (String arg: possibleParams)
             {
                 argSet.add(arg.toUpperCase());
             }
         }
         else
         {
-            // Wildcard argument
+            // Wildcard argument (any argument is valid for this parameter)
             argSets.add(null);
         }
 
@@ -55,7 +56,7 @@ public class Command
         // Default if no parameters
         Boolean matches = true;
 
-        // Split string into its words
+        // Split string into a list of strings, splitting on spaces
         String[] splits = input.trim().split("\\s+");
 
         // See if we have the right number of arguments
@@ -73,7 +74,7 @@ public class Command
                 Boolean inArgSet = argSet.contains(splits[idx].toUpperCase());
                 matches = matches && (inArgSet);
             }
-            // Else is a wildcard argument
+            // Else is a wildcard argument (any argument is valid for this parameter)
 
             idx++;
         }
