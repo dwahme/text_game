@@ -26,7 +26,7 @@ public class ActionManagement
             return;
         }
         
-        System.out.println("ACTION MANAGER ERROR- " + input + " not handled");
+        System.out.println("ACTION MANAGER ERROR- " + input + " not handled\n");
     }
     
 }
