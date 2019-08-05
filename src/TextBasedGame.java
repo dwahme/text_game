@@ -1,25 +1,31 @@
-import cli.CLI;
 import java.util.Scanner;
+import actionmanagement.ActionManagement;
+import cli.CLI;
+import cli.CommandSetBuilder;
+import gamestate.GameState;
 
 public class TextBasedGame 
 {
-
     public static void main(String[] args) 
     {
-        CLI Shell = new CLI();
+        GameState game = new GameState();
+        ActionManagement manager = new ActionManagement(game);
 
-        Scanner Scan = new Scanner(System.in);
+        CommandSetBuilder commands = new CommandSetBuilder();
+        CLI shell = new CLI(manager, commands.getCommands());
+
+        Scanner scan = new Scanner(System.in);
         System.out.print("Greetings, adventurer.\n\n");
 
-        while (Shell.endGame() == false)
+        while (shell.endGame() == false)
         {
-            Shell.prompt();
+            shell.prompt();
 
             // Get and process user input
-            String line = Scan.nextLine();
-            Shell.process(line);
+            String line = scan.nextLine();
+            shell.process(line);
         }
 
-        Scan.close();
+        scan.close();
     }
 }

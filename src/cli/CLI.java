@@ -5,40 +5,18 @@ import actionmanagement.ActionManagement;
 
 public class CLI 
 {
-    ActionManagement Manager = new ActionManagement();
-
-    HashMap<String, Command> commands;
+    ActionManagement _manager;
+    HashMap<String, Command> _commands;
     
     // Vars
     Boolean endGame = false;
     String prompt = "> ";
 
     // No args constructor
-    public CLI() 
+    public CLI(ActionManagement manager, HashMap<String, Command> commands) 
     {
-        addCommands();
-    }
-
-    // Makes the set of possible commands
-    private void addCommands()
-    {
-        commands = new HashMap<String, Command>();
-
-        // 0 param commands
-        commands.put("INVENTORY", new Command("INVENTORY"));
-        
-        // 1 param commands
-        commands.put("LOOK", new Command("LOOK").addParam());
-        commands.put("ATTACK", new Command("ATTACK").addParam());
-        commands.put("UNLOCK", new Command("UNLOCK").addParam());
-        commands.put("WALK",
-            new Command("WALK").addParam("NORTH", "SOUTH", "EAST", "WEST"));
-
-        // 2 param commands
-        commands.put("EQUIP", 
-            new Command("EQUIP").addParam().addParam("LEFT", "RIGHT", "BOTH"));
-        commands.put("PICK", 
-            new Command("PICK").addParam("UP").addParam());
+        this._manager = manager;
+        this._commands = commands;
     }
 
     // Returns if we need to exit the game
@@ -60,7 +38,7 @@ public class CLI
         String[] words = input.trim().split("\\s+");
 
         // Find the associated command
-        Command command = commands.get(words[0].toUpperCase());
+        Command command = _commands.get(words[0].toUpperCase());
 
         if (command != null)
         {
@@ -91,7 +69,7 @@ public class CLI
         // Otherwise, attempt to process the command
         if (isValidCommand(input))
         {
-            Manager.process(input);
+            _manager.process(input);
         }
         else
         {

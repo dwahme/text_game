@@ -4,12 +4,12 @@ import gamestate.GameState;
 
 public class ActionManagement 
 {
-    GameState Game = new GameState();
+    GameState _game;
 
     //No args constructor
-    public ActionManagement()
+    public ActionManagement(GameState game)
     {
-
+        this._game = game;
     }
 
     // High level command processor
